@@ -293,6 +293,7 @@ class Pod(OCS):
         if fio_filename:
             self.io_params['filename'] = fio_filename
         self.io_params['iodepth'] = depth
+        self.io_params['timeout'] = runtime + 600
         self.fio_thread = self.wl_obj.run(**self.io_params)
 
     def run_git_clone(self):
