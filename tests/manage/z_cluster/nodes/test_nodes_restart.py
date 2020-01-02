@@ -59,7 +59,7 @@ class TestNodesRestart(ManageTest):
         self.sanity_helpers.create_resources(pvc_factory, pod_factory)
 
     @pytest.mark.polarion_id("OCS-2015")
-    def test_roll_nodes_restart(self, nodes, pvc_factory, pod_factory):
+    def test_rolling_nodes_restart(self, nodes, pvc_factory, pod_factory):
         """
         Test restart nodes one after the other and check health status in between
 
