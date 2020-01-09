@@ -27,16 +27,14 @@ def get_node_objs(node_names=None):
     node_dicts = nodes_obj.get()['items']
     if not node_names:
         nodes = [OCS(**node_obj) for node_obj in node_dicts]
-        assert nodes, "Failed to get the nodes OCS objects"
-        return nodes
     else:
         nodes = [
             OCS(**node_obj) for node_obj in node_dicts if (
                 node_obj.get('metadata').get('name') in node_names
             )
         ]
-        assert nodes, "Failed to get the nodes OCS objects"
-        return nodes
+    assert nodes, "Failed to get the nodes OCS objects"
+    return nodes
 
 
 def get_typed_nodes(node_type='worker', num_of_nodes=None):
@@ -53,7 +51,6 @@ def get_typed_nodes(node_type='worker', num_of_nodes=None):
 
     """
     nodes = get_node_objs()
-    assert nodes, "Failed to get the nodes OCS objects"
     typed_nodes = [
         n for n in nodes if node_type in n.get().get('metadata')
         .get('annotations').get('machineconfiguration.openshift.io/currentConfig')
